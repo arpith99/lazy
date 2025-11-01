@@ -57,6 +57,7 @@
   "sonokai": { "branch": "master", "commit": "48c809c887ce7b7828f7ea27408fc2ef2179efb5" },
   "substrata.nvim": { "branch": "main", "commit": "e3b2b69ce597e8d17767a41d8db45b15178a0b45" },
   "taglist": { "branch": "master", "commit": "e56242e6965ce483798add54625fd44002a559f1" },
+  "telescope-undo.nvim": { "branch": "main", "commit": "928d0c2dc9606e01e2cc547196f48d2eaecf58e5" },
   "telescope.nvim": { "branch": "master", "commit": "b4da76be54691e854d3e0e02c36b0245f945c2c7" },
   "todo-comments.nvim": { "branch": "main", "commit": "411503d3bedeff88484de572f2509c248e499b38" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
