@@ -4,7 +4,7 @@
 vim.opt.winbar = "%=%m %f"
 
 -- Enable relative line numbers
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- Performance optimizations for smooth scrolling
 vim.opt.lazyredraw = false -- Keep false, true can cause issues with modern plugins
