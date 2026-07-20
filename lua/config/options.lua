@@ -22,3 +22,6 @@ vim.opt.synmaxcol = 300 -- Only highlight first 300 columns
 
 -- Show vertical line at column 120
 vim.opt.colorcolumn = "120"
+
+-- Wrap long lines
+vim.opt.wrap = true
