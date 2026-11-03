@@ -18,19 +18,3 @@ vim.api.nvim_create_autocmd("VimEnter", {
     vim.cmd.colorscheme(random_scheme)
   end,
 })
-
--- Auto-open Snacks explorer and Taglist on startup
-vim.api.nvim_create_autocmd("VimEnter", {
-  group = vim.api.nvim_create_augroup("auto_explorer_taglist", { clear = true }),
-  callback = function()
-    vim.schedule(function()
-      local main_win = vim.api.nvim_get_current_win()
-      Snacks.explorer()
-      vim.cmd("TlistOpen")
-      -- Return focus to the main editor window
-      vim.schedule(function()
-        vim.api.nvim_set_current_win(main_win)
-      end)
-    end)
-  end,
-})

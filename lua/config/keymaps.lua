@@ -33,14 +33,9 @@ end
 del_keymap("n", "<leader>h")
 del_keymap("n", "<leader>H")
 
--- Remove Snacks git status default so fugitive can use it
-del_keymap("n", "<leader>gs")
-
 -- Remove H and L buffer navigation to restore default Vim functionality (H=top, L=bottom)
 del_keymap("n", "H")
 del_keymap("n", "L")
-
--- Note: <leader>a AI keymaps are overridden by our config since we moved Avante to <leader>v
 
 -- Colorscheme cycling: F7 cycles dark schemes, F8 cycles light ones
 local schemes = require("config.colorschemes")
@@ -55,9 +50,6 @@ vim.keymap.set("n", "<F8>", function()
   light_index = light_index % #schemes.light + 1
   schemes.apply(schemes.light[light_index], "light")
 end, { desc = "Cycle light colorschemes" })
-
--- Taglist toggle
-vim.keymap.set("n", "<F9>", "<cmd>TlistToggle<cr>", { desc = "Toggle Taglist" })
 
 -- Save and quit shortcuts
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
@@ -78,18 +70,3 @@ vim.keymap.set("n", "gT", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
 
 -- Trouble LSP at bottom
 vim.keymap.set("n", "<leader>cs", "<cmd>Trouble lsp toggle focus=true win.position=bottom win.size.height=0.2<cr>", { desc = "Trouble LSP (bottom)" })
-
--- Fugitive keymaps (override LazyVim defaults)
-vim.keymap.set("n", "<leader>gs", function()
-  vim.cmd("topleft Git")
-  -- Resize to 30% of editor height
-  local height = math.floor(vim.o.lines * 0.3)
-  vim.cmd("resize " .. height)
-end, { desc = "Git status (fugitive)" })
-vim.keymap.set("n", "<leader>gd", "<cmd>Gdiffsplit<cr>", { desc = "Git diff split" })
-vim.keymap.set("n", "<leader>gc", "<cmd>Git commit<cr>", { desc = "Git commit" })
-vim.keymap.set("n", "<leader>gp", "<cmd>Git push --force<cr>", { desc = "Git push --force" })
-vim.keymap.set("n", "<leader>gP", "<cmd>Git pull<cr>", { desc = "Git pull" })
-vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<cr>", { desc = "Git blame" })
-vim.keymap.set("n", "<leader>gB", "<cmd>GBrowse<cr>", { desc = "Git browse (GitHub)" })
-vim.keymap.set("n", "<leader>gl", "<cmd>Git lo<cr>", { desc = "Git lo (fugitive)" })
