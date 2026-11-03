@@ -1,6 +1,8 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.editor.aerial"
+    "lazyvim.plugins.extras.editor.aerial",
+    "lazyvim.plugins.extras.lang.clangd",
+    "lazyvim.plugins.extras.lang.rust"
   ],
   "install_version": 8,
   "news": {
