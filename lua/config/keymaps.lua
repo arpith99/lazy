@@ -42,34 +42,19 @@ del_keymap("n", "L")
 
 -- Note: <leader>a AI keymaps are overridden by our config since we moved Avante to <leader>v
 
--- Colorscheme cycling
-local colorschemes = {
-  "tokyonight-night",
-  "catppuccin",
-  "sonokai",
-  "monokai",
-  "gruvbox",
-  "nord",
-  "dracula",
-  "onedark",
-  "kanagawa",
-  "nightfox",
-  "rose-pine",
-  "everforest",
-  "solarized",
-  "material",
-  "github_dark",
-  "moonfly",
-  "substrata",
-}
-local current_index = 1
+-- Colorscheme cycling: F7 cycles dark schemes, F8 cycles light ones
+local schemes = require("config.colorschemes")
+local dark_index, light_index = 1, 1
 
 vim.keymap.set("n", "<F7>", function()
-  current_index = current_index % #colorschemes + 1
-  local colorscheme = colorschemes[current_index]
-  vim.cmd.colorscheme(colorscheme)
-  vim.notify("Colorscheme: " .. colorscheme, vim.log.levels.INFO)
-end, { desc = "Cycle colorschemes" })
+  dark_index = dark_index % #schemes.dark + 1
+  schemes.apply(schemes.dark[dark_index], "dark")
+end, { desc = "Cycle dark colorschemes" })
+
+vim.keymap.set("n", "<F8>", function()
+  light_index = light_index % #schemes.light + 1
+  schemes.apply(schemes.light[light_index], "light")
+end, { desc = "Cycle light colorschemes" })
 
 -- Taglist toggle
 vim.keymap.set("n", "<F9>", "<cmd>TlistToggle<cr>", { desc = "Toggle Taglist" })

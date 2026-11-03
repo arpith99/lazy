@@ -11,27 +11,10 @@
 vim.api.nvim_create_autocmd("VimEnter", {
   group = vim.api.nvim_create_augroup("random_colorscheme", { clear = true }),
   callback = function()
-    local colorschemes = {
-      "tokyonight-night",
-      "catppuccin",
-      "sonokai",
-      "monokai",
-      "gruvbox",
-      "nord",
-      "dracula",
-      "onedark",
-      "kanagawa",
-      "nightfox",
-      "rose-pine",
-      "everforest",
-      "solarized",
-      "material",
-      "github_dark",
-      "moonfly",
-      "substrata",
-    }
+    local colorschemes = require("config.colorschemes").dark
     math.randomseed(os.time())
     local random_scheme = colorschemes[math.random(#colorschemes)]
+    vim.o.background = "dark"
     vim.cmd.colorscheme(random_scheme)
   end,
 })
