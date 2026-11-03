@@ -20,7 +20,6 @@ return {
           map("<leader>rc", "openCargo", "Rust: Open Cargo.toml")
           map("<leader>rp", "parentModule", "Rust: Parent Module")
           map("<leader>ra", "codeAction", "Rust: Code Action")
-          map("K", { "hover", "actions" }, "Rust: Hover Actions")
         end,
         default_settings = {
           ["rust-analyzer"] = {
@@ -29,6 +28,27 @@ return {
               command = "clippy",
               allFeatures = true,
               extraArgs = { "--no-deps" },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
+    -- K must go through LazyVim's LSP keys to override its global hover;
+    -- enabled = false only registers the keys, rustaceanvim runs the server
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        ["rust-analyzer"] = {
+          enabled = false,
+          keys = {
+            {
+              "K",
+              function()
+                vim.cmd.RustLsp({ "hover", "actions" })
+              end,
+              desc = "Rust: Hover Actions",
             },
           },
         },
